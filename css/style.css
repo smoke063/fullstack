@@ -1,0 +1,127 @@
+:root {
+    --black: #222222;
+    --pink-bkg: #F1E4E6;
+    --pink-text: #F1808f;
+}
+
+body {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.visually-hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: var(--black);
+}
+
+.header__logo {
+    margin: 0 41px 0 0;
+}
+
+.header__search {
+
+}
+
+.header__button {
+    background-color: transparent;
+    border: 0;
+}
+
+.header__link {
+    margin: 0 0 0 33px;
+}
+
+.header__wrp {
+    display: flex;
+    justify-content: space-between;
+    min-height: 75px;
+}
+
+.header__menu {
+    display: none;
+}
+
+.brand {
+    display: flex;
+    margin: 0 0 63px;
+}
+
+.brand__title-wrp {
+    display: flex;
+    align-items: start;
+    padding: 0 0 0 92px;
+    background-color: var(--pink-bkg);
+    flex-grow: 1;
+}
+
+.brand__img {
+
+}
+
+.brand__title {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 58px;
+    color: var(--black);
+    text-transform: uppercase;
+}
+
+.brand__sub-title {
+    display: block;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.brand__sub-title-pink {
+    color: var(--pink-text);
+}
+
+.sales__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sales__item {
+    width: 360px;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sales__item--woman {
+    background-image: url("../img/sales-woman.jpg");
+}
+
+.sales__item--man {
+    background-image: url("../img/sales-man.jpg");
+}
+
+.sales__item--kids {
+    background-image: url("../img/sales-kids.jpg");
+}
+
+.sales__item--shoes {
+    background-image: url("../img/sales-shoes.jpg");
+    width: 100%;
+}
