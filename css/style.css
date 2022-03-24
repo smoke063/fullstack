@@ -1,127 +1,51 @@
-:root {
-    --black: #222222;
-    --pink-bkg: #F1E4E6;
-    --pink-text: #F1808f;
+
+* {
+    /* So 100% means 100% */
+    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Lato';
-    font-weight: 400;
-    font-style: normal;
-    font-size: 14px;
-    line-height: 17px;
-}
-
-.visually-hidden {
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    border: 0;
-    padding: 0;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    margin: -1px;
-}
-
-.container {
-    width: 1140px;
-    margin: 0 auto;
+html, body {
+    height: 100%;
 }
 
 .header {
-    background-color: var(--black);
-}
-
-.header__logo {
-    margin: 0 41px 0 0;
-}
-
-.header__search {
-
-}
-
-.header__button {
-    background-color: transparent;
-    border: 0;
-}
-
-.header__link {
-    margin: 0 0 0 33px;
-}
-
-.header__wrp {
     display: flex;
-    justify-content: space-between;
-    min-height: 75px;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    min-height: 90px;
 }
 
-.header__menu {
-    display: none;
+main {
+    height: calc(100% - 90px);
 }
 
-.brand {
+.cart-button {
+    height: 30px;
+    width: 100px;
+    margin: 0 60px 0 15px;
+    border: 1px solid deeppink;
+    border-radius: 15px;
+    background-color: hotpink;
+    color: white;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+
+.goods-list {
+    margin: 0 150px;
     display: flex;
-    margin: 0 0 63px;
-}
-
-.brand__title-wrp {
-    display: flex;
-    align-items: start;
-    padding: 0 0 0 92px;
-    background-color: var(--pink-bkg);
-    flex-grow: 1;
-}
-
-.brand__img {
-
-}
-
-.brand__title {
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 58px;
-    color: var(--black);
-    text-transform: uppercase;
-}
-
-.brand__sub-title {
-    display: block;
-    font-size: 32px;
-    line-height: 38px;
-}
-
-.brand__sub-title-pink {
-    color: var(--pink-text);
-}
-
-.sales__list {
-    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
 }
 
-.sales__item {
-    width: 360px;
-    min-height: 260px;
+.goods-item {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.sales__item--woman {
-    background-image: url("../img/sales-woman.jpg");
-}
-
-.sales__item--man {
-    background-image: url("../img/sales-man.jpg");
-}
-
-.sales__item--kids {
-    background-image: url("../img/sales-kids.jpg");
-}
-
-.sales__item--shoes {
-    background-image: url("../img/sales-shoes.jpg");
-    width: 100%;
+    align-items: center;
+    background-color: pink;
+    height: 100px;
+    width: 200px;
+    margin: 0 0 15px 20px;
 }
