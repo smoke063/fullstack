@@ -1,47 +1,17 @@
-class ProductList {
-    goods = [
-        { title: 'Shirt', price: 150 },
-        { title: 'Socks', price: 50 },
-        { title: 'Jacket', price: 350 },
-        { title: 'Shoes', price: 250 },
-        { title: 'Shirt', price: 150 },
-        { title: 'Socks', price: 50 },
-        { title: 'Jacket', price: 350 },
-        { title: 'Shoes', price: 250 },
-        { title: 'Shirt', price: 150 },
-        { title: 'Socks', price: 50 },
-        { title: 'Jacket', price: 350 },
-        { title: 'Shoes', price: 250 },
-        { title: 'Shirt', price: 150 },
-        { title: 'Socks', price: 50 },
-        { title: 'Jacket', price: 350 },
-        { title: 'Shoes', price: 250 },
-        { title: 'Shirt', price: 150 },
-        { title: 'Socks', price: 50 },
-        { title: 'Jacket', price: 350 },
-        { title: 'Shoes', price: 250 },
-        { title: 'Shirt', price: 150 },
-        { title: 'Socks', price: 50 },
-        { title: 'Jacket', price: 350 },
-        { title: 'Shoes', price: 250 },
-    ];
-
-    SumPrices() {
-        return this.goods.reduce(
-            (sum, {price}) => sum + price,
-            0
-        )
-    }
-}
-
-document.querySelector('.goods-list').innerHTML = new ProductList().SumPrices();
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const makeGETRequest = async (url) => {
+    return (await fetch(url)).json();
+};
 
 class CardItem {
 
-    constructor(name = '', description = '', price = 0 ) {
-        this.name = name;
-        this.description = description;
+    constructor(product_name = '', price = 0) {
+        this.product_name = product_name;
         this.price = price;
+    }
+
+    render() {
+        return `<div class="goods-item"><h3>${this.product_name}</h3><p>${this.price}</p></div>`;
     }
 }
 
@@ -51,6 +21,19 @@ class Cart {
 
     constructor() {
 
+    }
+
+    async fetchGoods() {
+        this.#items = await makeGETRequest(`${API_URL}/catalogData.json`);
+    }
+
+    render() {
+        let listHtml = '';
+        this.#items.forEach(good => {
+            const goodItem = new CardItem(good.product_name, good.price);
+            listHtml += goodItem.render();
+        });
+        document.querySelector('.goods-list').innerHTML = listHtml;
     }
 
     getById(id) {
@@ -69,14 +52,21 @@ class Cart {
         this.#items = [];
     }
 
+    sumPrices() {
+        return this.#items.reduce(
+            (sum, {price}) => sum + price,
+            0
+        )
+    }
+
+    getItems() {
+        return this.#items;
+    }
 }
 
+(async () => {
+    const cart = new Cart();
+    await cart.fetchGoods();
+    cart.render();
+})();
 
-const renderGoodsItem = ({title = '', price = 0}) => `<div class="goods-item"><h3>${title}</h3><p>${price}</p></div>`;
-
-const renderGoodsList = (list = []) => {
-    let goodsList = list.map(item => renderGoodsItem(item));
-    document.querySelector('.goods-list').innerHTML = goodsList.join('');
-}
-
-//renderGoodsList();
