@@ -1,28 +1,36 @@
 const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-const makeGETRequest = async (url) => {
-    return (await fetch(url)).json();
-};
 
-const text = `
-One: 'Hi Mary.' Two: 'Oh, hi.'
-One: 'How are you doing?'
-Two: 'I'm doing alright. How about you?'
-One: 'Not too bad. The weather is great isn't it?'
-Two: 'Yes. It's absolutely beautiful today.'
-One: 'I wish it was like this more frequently.'
-Two: 'Me too.'
-One: 'So where are you going now?'
-Two: 'I'm going to meet a friend of mine at the department store.'
-One: 'Going to do a little shopping?'
-Two: 'Yeah, I have to buy some presents for my parents.'
-One: 'What's the occasion?'
-Two: 'It's their anniversary.'
-One: 'That's great. Well, you better get going. You don't want to be late.'
-Two: 'I'll see you next time.'
-One: 'Sure. Bye.'
-`
+import { createApp } from 'vue';
 
-const res = text.replace(/\s\'|\'$/mig, '"');
+createApp({
+    async mounted() {
+        const goods = await this.makeGETRequest();
+        this.goods = goods;
+        this.filteredGoods = goods;
+        this.card = [];
+    },
+    data() {
+        return {
+            imgSrc: 'https://via.placeholder.com/200x150',
+            goods: [],
+            filteredGoods: [],
+            searchLine: '',
+            isVisibleCart: false
+        }
+    },
+    methods: {
+        filterGoods() {
+            this.filteredGoods = this.goods.filter((g) => g.product_name.toLowerCase().includes(this.searchLine.toLowerCase()));
+
+        },
+        async makeGETRequest() {
+            return (await fetch(`${API_URL}/catalogData.json`)).json();
+        },
+        method(good) {
+            this.card.add(good);
+        }
+    },
+}).mount('#app')
 
 class CardItem {
 
@@ -85,9 +93,4 @@ class Cart {
     }
 }
 
-(async () => {
-    const cart = new Cart();
-    await cart.fetchGoods();
-    cart.render();
-})();
 
