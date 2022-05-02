@@ -40,13 +40,8 @@ main {
     flex-wrap: wrap;
 }
 
-.goods-item {
-  /*  display: flex;
-    justify-content: center;
-    align-items: center;*/
+.goods-item, .cart-block {
     background-color: pink;
-  /*  height: 100px;
-    width: 200px;*/
     padding: 10px;
     margin: 0 0 15px 20px;
     border: 1px solid pink;
@@ -72,4 +67,16 @@ main {
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     margin: 0 0 20px 0;
     transform: translateX(50%);
+}
+
+.cart-block {
+    background-color: pink;
+    position: absolute;
+    left: 45%;
+    top: 25%;
+}
+
+.cart-title {
+    padding: 8px;
+    text-align: center;
 }
