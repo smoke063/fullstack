@@ -41,11 +41,35 @@ main {
 }
 
 .goods-item {
-    display: flex;
+  /*  display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
     background-color: pink;
-    height: 100px;
-    width: 200px;
+  /*  height: 100px;
+    width: 200px;*/
+    padding: 10px;
     margin: 0 0 15px 20px;
+    border: 1px solid pink;
+    border-radius: 10px;
+}
+
+.goods-item-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px;
+    padding: 15px 10px;
+}
+
+.btn-add-good {
+    height: 30px;
+    width: 100px;
+    margin: 0 60px 0 15px;
+    border: 1px solid deeppink;
+    border-radius: 15px;
+    background-color: hotpink;
+    color: white;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    margin: 0 0 20px 0;
+    transform: translateX(50%);
 }
