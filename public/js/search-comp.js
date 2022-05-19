@@ -1,5 +1,4 @@
-
-Vue.component('search', {
+var search = {
     data: {
         searchLine: ''
     },
@@ -9,4 +8,6 @@ Vue.component('search', {
              <button class="search-button" type="button" @click="$root.filterGoods(searchLine)">Поиск</button>
             </div>
 `
-});
+};
+
+export default search;

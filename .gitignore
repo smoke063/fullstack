@@ -1,0 +1,8 @@
+/node_modules/
+/my_webpack/node_modules/
+/.idea/vcs.xml
+/package-lock.json
+/my_webpack/package-lock.json
+/.idea/modules.xml
+/.idea/fullstack.iml
+/.idea/.gitignore

@@ -1,6 +1,5 @@
 
-
-Vue.component('cart', {
+var cart = {
     props: ['cartItems', 'img', 'visibility'],
     template: `
             <div class="cart-block" v-show="visibility">
@@ -8,9 +7,12 @@ Vue.component('cart', {
                 <cart-item v-for="item in cartItems" :key="item.id_product" :cart-item="item"></cart-item>
             </div>
 `
-});
+};
 
-Vue.component('cart-item', {
+var cartItem =  {
+    components: {
+        cart
+    },
     props: [ 'cartItem'],
     template: `
              <div class="cart-item">
@@ -26,4 +28,6 @@ Vue.component('cart-item', {
                 <button  class="btn-add-good" @click="$root.removeGood(cartItem)">Удалить</button>
             </div>
 `
-});
+};
+
+export default cartItem;
